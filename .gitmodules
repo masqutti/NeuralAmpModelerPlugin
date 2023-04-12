@@ -1,6 +1,7 @@
 [submodule "iPlug2"]
 	path = iPlug2
 	url = https://github.com/masqutti/iPlug2
+	branch = cpp14
 [submodule "eigen"]
 	path = eigen
 	url = https://gitlab.com/libeigen/eigen.git
