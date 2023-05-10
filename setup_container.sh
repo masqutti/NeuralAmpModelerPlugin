@@ -14,3 +14,8 @@ echo "Downloading iPlug2 prebuilt libs..."
 cd iPlug2/Dependencies/
 ./download-prebuilt-libs.sh
 cd ../..
+
+echo "checkout nam Core git"
+cd NeuralAmpModeler/NeuralAmpModelerCore/
+git checkout dspStruct
+cd ../..
