@@ -15,6 +15,8 @@
 // clang-format on
 #include "architecture.hpp"
 
+#include "ghc/fs_std_fwd.hpp"
+
 using namespace iplug;
 using namespace igraphics;
 
@@ -408,7 +410,7 @@ NeuralAmpModeler::NeuralAmpModeler(const InstanceInfo& info)
     const float meterMax = -0.01f;
     pGraphics
       ->AttachControl(
-        new IVPeakAvgMeterControl(inputMeterArea, "",
+        new IVPeakAvgMeterControl<1>(inputMeterArea, "",
                                   style.WithWidgetFrac(0.5).WithShowValue(false).WithColor(kFG, PluginColors::NAM_2),
                                   EDirection::Vertical, {}, 0, meterMin, meterMax, {}),
         kCtrlTagInputMeter)
@@ -416,7 +418,7 @@ NeuralAmpModeler::NeuralAmpModeler(const InstanceInfo& info)
       ->SetPeakSize(2.0f);
     pGraphics
       ->AttachControl(
-        new IVPeakAvgMeterControl(outputMeterArea, "",
+        new IVPeakAvgMeterControl<1>(outputMeterArea, "",
                                   style.WithWidgetFrac(0.5).WithShowValue(false).WithColor(kFG, PluginColors::NAM_2),
                                   EDirection::Vertical, {}, 0, meterMin, meterMax, {}),
         kCtrlTagOutputMeter)
@@ -697,9 +699,8 @@ void NeuralAmpModeler::_FallbackDSP(iplug::sample** inputs, iplug::sample** outp
 std::string NeuralAmpModeler::_GetNAM(const WDL_String& modelPath)
 {
   WDL_String previousNAMPath = this->mNAMPath;
-  try
-  {
-    auto dspPath = std::filesystem::path(modelPath.Get());
+  try {
+    auto dspPath = fs::path(modelPath.Get());
     mStagedNAM = get_dsp(dspPath);
     this->_SetModelMsg(modelPath);
     this->mNAMPath = modelPath;
@@ -850,7 +851,8 @@ void NeuralAmpModeler::_ProcessOutput(iplug::sample** inputs, iplug::sample** ou
 
 void NeuralAmpModeler::_SetModelMsg(const WDL_String& modelPath)
 {
-  auto dspPath = std::filesystem::path(modelPath.Get());
+  auto dspPath = fs::path(modelPath.Get());
+
   std::stringstream ss;
   ss << "Loaded ";
   if (dspPath.has_filename())
@@ -863,7 +865,8 @@ void NeuralAmpModeler::_SetModelMsg(const WDL_String& modelPath)
 void NeuralAmpModeler::_SetIRMsg(const WDL_String& irPath)
 {
   this->mIRPath = irPath; // This might already be done elsewhere...need to dedup.
-  auto dspPath = std::filesystem::path(irPath.Get());
+  auto dspPath = fs::path(irPath.Get());
+
   std::stringstream ss;
   ss << "Loaded " << dspPath.filename().stem();
   SendControlMsgFromDelegate(kCtrlTagIRName, 0, int(strlen(ss.str().c_str())), ss.str().c_str());
