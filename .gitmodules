@@ -7,3 +7,7 @@
 [submodule "NeuralAmpModeler/NeuralAmpModelerCore"]
 	path = NeuralAmpModeler/NeuralAmpModelerCore
 	url = https://github.com/masqutti/NeuralAmpModelerCore
+[submodule "AudioDSPTools"]
+	path = NeuralAmpModeler/AudioDSPTools
+	url = https://github.com/sdatkinson/AudioDSPTools.git
+

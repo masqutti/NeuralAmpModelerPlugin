@@ -1,7 +1,7 @@
 #define PLUG_NAME "NeuralAmpModeler"
 #define PLUG_MFR "Steven Atkinson"
-#define PLUG_VERSION_HEX 0x00000701
-#define PLUG_VERSION_STR "0.7.1"
+#define PLUG_VERSION_HEX 0x00000705
+#define PLUG_VERSION_STR "0.7.5"
 #define PLUG_UNIQUE_ID '1YEo'
 #define PLUG_MFR_ID 'SDAa'
 #define PLUG_URL_STR "https://github.com/sdatkinson/NeuralAmpModelerPlugin"
@@ -14,7 +14,11 @@
 
 #define SHARED_RESOURCES_SUBPATH "NeuralAmpModeler"
 
-#define PLUG_CHANNEL_IO "1-1 1-2"
+#ifdef APP_API
+  #define PLUG_CHANNEL_IO "1-2"
+#else
+  #define PLUG_CHANNEL_IO "1-1 1-2 2-2"
+#endif
 
 #define PLUG_LATENCY 0
 #define PLUG_TYPE 0
@@ -28,10 +32,8 @@
 #define PLUG_FPS 60
 #define PLUG_SHARED_RESOURCES 0
 #define PLUG_HOST_RESIZE 0
-#define PLUG_MIN_WIDTH 250
-#define PLUG_MIN_HEIGHT 150
-#define PLUG_MAX_WIDTH 1000
-#define PLUG_MAX_HEIGHT 600
+#define PLUG_MAX_WIDTH PLUG_WIDTH * 4
+#define PLUG_MAX_HEIGHT PLUG_HEIGHT * 4
 
 #define AUV2_ENTRY NeuralAmpModeler_Entry
 #define AUV2_ENTRY_STR "NeuralAmpModeler_Entry"
@@ -55,9 +57,41 @@
 #define APP_SIGNAL_VECTOR_SIZE 64
 
 #define ROBOTO_FN "Roboto-Regular.ttf"
-#define HELP_FN "help.svg"
-#define FILE_FN "file.svg"
-#define FOLDER_FN "folder.svg"
-#define CLOSE_BUTTON_FN "close-button.svg"
-#define TOLEX_FN "tolex.jpeg"
-#define TOLEX2X_FN "tolex@2x.jpeg"
+#define MICHROMA_FN "Michroma-Regular.ttf"
+
+#define HELP_FN "Help.svg"
+#define FILE_FN "File.svg"
+#define CLOSE_BUTTON_FN "Cross.svg"
+#define LEFT_ARROW_FN "ArrowLeft.svg"
+#define RIGHT_ARROW_FN "ArrowRight.svg"
+#define MODEL_ICON_FN "ModelIcon.svg"
+#define IR_ICON_ON_FN "IRIconOn.svg"
+#define IR_ICON_OFF_FN "IRIconOff.svg"
+
+#define BACKGROUND_FN "Background.jpg"
+#define BACKGROUND2X_FN "Background@2x.jpg"
+#define BACKGROUND3X_FN "Background@3x.jpg"
+#define KNOBBACKGROUND_FN "KnobBackground.png"
+#define KNOBBACKGROUND2X_FN "KnobBackground@2x.png"
+#define KNOBBACKGROUND3X_FN "KnobBackground@3x.png"
+#define FILEBACKGROUND_FN "FileBackground.png"
+#define FILEBACKGROUND2X_FN "FileBackground@2x.png"
+#define FILEBACKGROUND3X_FN "FileBackground@3x.png"
+#define LINES_FN "Lines.png"
+#define LINES2X_FN "Lines@2x.png"
+#define LINES3X_FN "Lines@3x.png"
+#define SLIDESWITCHHANDLE_FN "SlideSwitchHandle.png"
+#define SLIDESWITCHHANDLE2X_FN "SlideSwitchHandle@2x.png"
+#define SLIDESWITCHHANDLE3X_FN "SlideSwitchHandle@3x.png"
+
+#define METERBACKGROUND_FN "MeterBackground.png"
+#define METERBACKGROUND2X_FN "MeterBackground@2x.png"
+#define METERBACKGROUND3X_FN "MeterBackground@3x.png"
+
+// Issue 291
+// On the macOS standalone, we might not have permissions to traverse the file directory, so we have the app ask the
+// user to pick a directory instead of the file in the directory.
+// Everyone else is fine though.
+#if defined(APP_API) && defined(__APPLE__)
+  #define NAM_PICK_DIRECTORY
+#endif

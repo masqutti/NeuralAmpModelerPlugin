@@ -116,7 +116,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(SolutionDir)build-win\app\$(Platform)\$(Configuration)\int\</IntDir>
     <LinkIncremental />
-    <IncludePath>C:\Users\tontt\Documents\Tyoprojektit\filesystem\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build-win\app\$(Platform)\$(Configuration)\</OutDir>
@@ -129,7 +128,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(SolutionDir)build-win\app\$(Platform)\$(Configuration)\int\</IntDir>
-    <IncludePath>C:\Users\tontt\Documents\Tyoprojektit\filesystem\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'">
     <OutDir>$(SolutionDir)build-win\app\$(Platform)\$(Configuration)\</OutDir>
@@ -167,7 +165,6 @@
       <PreprocessorDefinitions>$(APP_DEFS);$(DEBUG_DEFS);$(EXTRA_DEBUG_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(APP_INC_PATHS);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(APP_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
@@ -262,9 +259,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="../config.h" />
-    <ClInclude Include="..\..\..\filesystem\include\ghc\filesystem.hpp" />
-    <ClInclude Include="..\..\..\filesystem\include\ghc\fs_fwd.hpp" />
-    <ClInclude Include="..\..\..\filesystem\include\ghc\fs_impl.hpp" />
     <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\RTAudio\include\asio.h" />
     <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\RTAudio\include\asiodrivers.h" />
     <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\RTAudio\include\asiodrvr.h" />
@@ -323,14 +317,16 @@
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugUtilities.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlug_include_in_plug_hdr.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlug_include_in_plug_src.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\dsp.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ImpulseResponse.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\NoiseGate.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\RecursiveLinearFilter.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\Resample.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\version.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\wav.h" />
     <ClInclude Include="..\Colors.h" />
     <ClInclude Include="..\NeuralAmpModeler.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\dsp.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\ImpulseResponse.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\NoiseGate.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\RecursiveLinearFilter.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\Resample.h" />
-    <ClInclude Include="..\NeuralAmpModelerCore\dsp\wav.h" />
+    <ClInclude Include="..\NeuralAmpModelerControls.h" />
     <ClInclude Include="..\NeuralAmpModelerCore\NAM\activations.h" />
     <ClInclude Include="..\NeuralAmpModelerCore\NAM\convnet.h" />
     <ClInclude Include="..\NeuralAmpModelerCore\NAM\dsp.h" />
@@ -380,19 +376,12 @@
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugPluginBase.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugProcessor.cpp" />
     <ClCompile Include="..\..\iPlug2\IPlug\IPlugTimer.cpp" />
+    <ClCompile Include="..\AudioDSPTools\dsp\dsp.cpp" />
+    <ClCompile Include="..\AudioDSPTools\dsp\ImpulseResponse.cpp" />
+    <ClCompile Include="..\AudioDSPTools\dsp\NoiseGate.cpp" />
+    <ClCompile Include="..\AudioDSPTools\dsp\RecursiveLinearFilter.cpp" />
+    <ClCompile Include="..\AudioDSPTools\dsp\wav.cpp" />
     <ClCompile Include="..\NeuralAmpModeler.cpp" />
-    <ClCompile Include="..\NeuralAmpModelerCore\dsp\dsp.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'">$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'">$(IntDir)%(RelativeDir)</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(RelativeDir)</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\NeuralAmpModelerCore\dsp\ImpulseResponse.cpp" />
-    <ClCompile Include="..\NeuralAmpModelerCore\dsp\NoiseGate.cpp" />
-    <ClCompile Include="..\NeuralAmpModelerCore\dsp\RecursiveLinearFilter.cpp" />
-    <ClCompile Include="..\NeuralAmpModelerCore\dsp\wav.cpp" />
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\activations.cpp" />
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\convnet.cpp" />
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\dsp.cpp">
