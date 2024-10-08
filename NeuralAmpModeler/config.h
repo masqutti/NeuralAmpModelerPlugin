@@ -1,7 +1,7 @@
 #define PLUG_NAME "NeuralAmpModeler"
 #define PLUG_MFR "Steven Atkinson"
-#define PLUG_VERSION_HEX 0x00000705
-#define PLUG_VERSION_STR "0.7.5"
+#define PLUG_VERSION_HEX 0x0000070a
+#define PLUG_VERSION_STR "0.7.10"
 #define PLUG_UNIQUE_ID '1YEo'
 #define PLUG_MFR_ID 'SDAa'
 #define PLUG_URL_STR "https://github.com/sdatkinson/NeuralAmpModelerPlugin"
@@ -59,7 +59,7 @@
 #define ROBOTO_FN "Roboto-Regular.ttf"
 #define MICHROMA_FN "Michroma-Regular.ttf"
 
-#define HELP_FN "Help.svg"
+#define GEAR_FN "Gear.svg"
 #define FILE_FN "File.svg"
 #define CLOSE_BUTTON_FN "Cross.svg"
 #define LEFT_ARROW_FN "ArrowLeft.svg"

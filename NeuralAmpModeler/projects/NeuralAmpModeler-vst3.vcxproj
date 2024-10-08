@@ -304,6 +304,8 @@
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsMac_view.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsWeb.h" />
     <ClInclude Include="..\..\iPlug2\IGraphics\Platforms\IGraphicsWin.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\LanczosResampler.h" />
+    <ClInclude Include="..\..\iPlug2\IPlug\Extras\NonIntegerResampler.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugAPIBase.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugConstants.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugEditorDelegate.h" />
@@ -331,6 +333,11 @@
     <ClInclude Include="..\AudioDSPTools\dsp\NoiseGate.h" />
     <ClInclude Include="..\AudioDSPTools\dsp\RecursiveLinearFilter.h" />
     <ClInclude Include="..\AudioDSPTools\dsp\Resample.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ResamplingContainer\Dependencies\LanczosResampler.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ResamplingContainer\Dependencies\WDL\heapbuf.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ResamplingContainer\Dependencies\WDL\ptrlist.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ResamplingContainer\Dependencies\WDL\wdltypes.h" />
+    <ClInclude Include="..\AudioDSPTools\dsp\ResamplingContainer\ResamplingContainer.h" />
     <ClInclude Include="..\AudioDSPTools\dsp\version.h" />
     <ClInclude Include="..\AudioDSPTools\dsp\wav.h" />
     <ClInclude Include="..\Colors.h" />
@@ -344,6 +351,7 @@
     <ClInclude Include="..\NeuralAmpModelerCore\NAM\version.h" />
     <ClInclude Include="..\NeuralAmpModelerCore\NAM\wavenet.h" />
     <ClInclude Include="..\resources\resource.h" />
+    <ClInclude Include="..\ToneStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\baseiids.cpp" />
@@ -424,6 +432,7 @@
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\lstm.cpp" />
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\util.cpp" />
     <ClCompile Include="..\NeuralAmpModelerCore\NAM\wavenet.cpp" />
+    <ClCompile Include="..\ToneStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resources\main.rc" />
